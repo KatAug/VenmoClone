@@ -19,9 +19,41 @@ user_two = {
     'account_balance':'900000', 
     'connected_banks': [
     ("First Federal National Bank", 50000), 
-    ("Chase", 19000)
+    ("Chase", 19000),
     ("Guaranty Bank & Trust", 250000),
     ]
     
  }
+
+user_name_prompt = input("Please enter your user name: ")
+while user_name_prompt != (user_one['user_name']):
+    print("User name is incorrect! Please enter the correct user name.")
+    user_name_prompt = input("Please enter your user name: ")
+password_prompt = input("Please enter your password: ")
+while password_prompt != (user_one['password']):
+    print("Your password is incorrect! Please enter the correct password.")
+    password_prompt = input("Please enter your password: ")
+if password_prompt == (user_one['password']):
+    print(f"You're current balance is ${user_one['account_balance']}")
+
+bank_one = user_one['connected_banks'][0]
+bank_two = user_one['connected_banks'][1]
+bank_three = user_one['connected_banks'][2]
+#banks = bank_one, bank_two, bank_three
+print(*bank_one)
+print(*bank_two)
+print(*bank_three)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
