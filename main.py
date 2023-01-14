@@ -1,4 +1,3 @@
-#2 dictionaries one called user_one and the other called user_two
 
 user_one = {
     'full_name':'SpongeBob Squarepants', 
@@ -39,10 +38,17 @@ if password_prompt == (user_one['password']):
 bank_one = user_one['connected_banks'][0]
 bank_two = user_one['connected_banks'][1]
 bank_three = user_one['connected_banks'][2]
-#banks = bank_one, bank_two, bank_three
-print(*bank_one)
-print(*bank_two)
-print(*bank_three)
+banks = bank_one, bank_two, bank_three
+for x, y in banks:
+    print(f"{str(x)}: ${str(y)}")
+
+user_prompt = input(f"Would you like to proceed to transfer money to {user_two['full_name']}? ")
+while user_prompt == "y":
+    user_prompt = input("How much would you like to transfer? ")
+#if input >= user_one['account_balance']:
+    #print("You have insufficent funds. Try another amount")
+else: 
+    print("That will end this transaction. Have a great day!")
 
 
 
@@ -52,8 +58,4 @@ print(*bank_three)
 
 
 
-
-
-
-
-
+ 
