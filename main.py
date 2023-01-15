@@ -45,17 +45,22 @@ for x, y in banks:
 user_prompt = input(f"Would you like to proceed to transfer money to {user_two['full_name']}? ")
 while user_prompt == "y":
     user_prompt = input("How much would you like to transfer? ")
-#if input >= user_one['account_balance']:
-    #print("You have insufficent funds. Try another amount")
-else: 
-    print("That will end this transaction. Have a great day!")
+    if user_prompt > user_one['account_balance']:
+            print("You have insufficent funds. Try another amount.")
+            user_prompt = input("How much would you like to transfer? ")
+    if user_prompt < user_one['account_balance']: 
+        print(f"${user_prompt} will be transferred to {user_two['full_name']}.")
+        new_acct_bal_one = ((int)(user_one['account_balance']) - (int)(user_prompt))
+        print(new_acct_bal_one)
+        new_bal = new_acct_bal_one - (int)(user_prompt) #How do I get this to loop? 
+        print(new_bal)
+        #new_acct_bal_two = ((int)(user_prompt)(int)(user_two['account_balance']) + (int)(user_prompt))
+        user_prompt = input("Would you like to make another transfer? ") 
+    else: 
+        print(f"Balance: {(int)(user_one['account_balance'])} ")
+        print("That will end this transaction. Have a great day!")  #Need these two lines to print when saying no after several transfers.     
+if user_prompt == "n":
+            #print(f"Balance: {(int)(user_one['account_balance'])} ")
+            print("That will end this transaction. Have a great day!") #Need this to print only when saying no to transferring to Sandy Cheeks.
 
-
-
-
-
-
-
-
-
- 
+#Need to be able to print the correct balance after making transfers. 
