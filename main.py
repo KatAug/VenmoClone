@@ -3,7 +3,7 @@ user_one = {
     'full_name':'SpongeBob Squarepants', 
     'user_name':'krusty krab', 
     'password':'pineapple', 
-    'account_balance': '750000', 
+    'account_balance': 750000, 
     'connected_banks': [
         ("RBFCU", 10000), 
         ("Pioneer Bank", 25000), 
@@ -15,7 +15,7 @@ user_two = {
     'full_name':'Sandy Cheeks', 
     'user_name':'treedome', 
     'password':'karate', 
-    'account_balance':'900000', 
+    'account_balance':900000, 
     'connected_banks': [
     ("First Federal National Bank", 50000), 
     ("Chase", 19000),
@@ -42,25 +42,36 @@ banks = bank_one, bank_two, bank_three
 for x, y in banks:
     print(f"{str(x)}: ${str(y)}")
 
+
+
+
+
 transfer = input(f"Would you like to transfer money to {user_two['full_name']}? ")
 while transfer == "y":
-    amount = input("How much would you like to transfer? ")#Why is it looping up to here when done? 
+    amount = int(input("How much would you like to transfer? "))#make sure it is an integer when working with numbers
     if amount > user_one['account_balance']:
         print("You have insufficent funds. Try another amount.")
-        print(input("How much would you like to transfer? "))
-    if amount < user_one['account_balance']:
+        
+    elif amount < user_one['account_balance']:
         print(f"${amount} will be transferred to {user_two['full_name']}.")
-        print((int)(amount) + (int)(user_two['account_balance']))
-        x = (int)(user_one['account_balance'])
-        y = (int)(amount)
-        new_acct_bal = x-y
-        current_bal = new_acct_bal - y
-        user_prompt = input("Would you like to make another transfer? ")
-    if user_prompt == "n":
-        print(f"Balance: ${current_bal}")
-        print("That will end this transaction. Have a great day!")
-if transfer == "n":
-    print("That will end this transaction. Have a great day!")
-else:
-    print("That will end this transaction. Have a great day!")
+        #Math Section
+        print("Making the transaction! .....")
+        user_one['account_balance'] -= amount
+        amount += user_two['account_balance']
+        transfer = input(f"Would you like to transfer money to {user_two['full_name']} AGAIN?! ")
+    
+print(f" You Now have this amount of money {user_one['account_balance']}")
+
+
+# if transfer == "n":
+#         print(f"Balance: ${new_acct_bal}")
+#         print("That will end this transaction. Have a great day!")
+# else:
+#     print("That will end this transaction. Have a great day!")
  
+        # #((int)(amount) + (int)(user_two['account_balance']))
+        # x = (int)(user_one['account_balance'])
+        # y = (int)(amount)
+        # new_acct_bal = x-y
+        # current_bal = new_acct_bal - y
+        # user_prompt = input("Would you like to make another transfer? ")
