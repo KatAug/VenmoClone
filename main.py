@@ -42,36 +42,23 @@ banks = bank_one, bank_two, bank_three
 for x, y in banks:
     print(f"{str(x)}: ${str(y)}")
 
-
-
-
-
 transfer = input(f"Would you like to transfer money to {user_two['full_name']}? ")
 while transfer == "y":
-    amount = int(input("How much would you like to transfer? "))#make sure it is an integer when working with numbers
+    amount = int(input("How much would you like to transfer? "))
     if amount > user_one['account_balance']:
-        print("You have insufficent funds. Try another amount.")
-        
+        print("You have insufficent funds. Try another amount.")    
     elif amount < user_one['account_balance']:
         print(f"${amount} will be transferred to {user_two['full_name']}.")
-        #Math Section
-        print("Making the transaction! .....")
         user_one['account_balance'] -= amount
         amount += user_two['account_balance']
-        transfer = input(f"Would you like to transfer money to {user_two['full_name']} AGAIN?! ")
-    
-print(f" You Now have this amount of money {user_one['account_balance']}")
+        transfer = input(f"Would you like to make another transfer to {user_two['full_name']}? ")
+        if transfer == "n":
+            print(f"Balance: ${ user_one['account_balance']}")
+else:
+    print("That will end this transaction. Have a great day!")
 
 
-# if transfer == "n":
-#         print(f"Balance: ${new_acct_bal}")
-#         print("That will end this transaction. Have a great day!")
-# else:
-#     print("That will end this transaction. Have a great day!")
+
+
+
  
-        # #((int)(amount) + (int)(user_two['account_balance']))
-        # x = (int)(user_one['account_balance'])
-        # y = (int)(amount)
-        # new_acct_bal = x-y
-        # current_bal = new_acct_bal - y
-        # user_prompt = input("Would you like to make another transfer? ")
