@@ -47,19 +47,22 @@ banks = bank_one, bank_two, bank_three
 for x, y in banks:
     print(f"{str(x)}: ${str(y)}")
 print()
-transfer = input(f"Would you like to transfer money to {user_two['full_name']}? ")
+transfer = input(f"Would you like to transfer money to {user_two['full_name']} (y/n)? ")
 print()
 while transfer == "y":
-    amount = int(input("How much would you like to transfer? "))
+    amount = int(input("How much would you like to transfer? (Whole dollars only, please!) "))
     print()
     if amount > user_one['account_balance']:
-        print("You have insufficent funds. Try another amount.")    
+        print("You have insufficent funds. Please, try another amount.")
+        print()    
     elif amount < user_one['account_balance']:
-        print(f"${amount} will be transferred to {user_two['full_name']}")
+        print("Beginning transaction.....")
+        print()
+        print(f"Your transaction was successful! ${amount} will be transferred to {user_two['full_name']}")
         print()
         user_one['account_balance'] -= amount
         amount += user_two['account_balance']
-        transfer = input(f"Would you like to make another transfer to {user_two['full_name']}? ")
+        transfer = input(f"Would you like to make another transfer to {user_two['full_name']} (y/n)? ")
         print()
         if transfer == "n":
             print(f"Your remaining balance is ${ user_one['account_balance']}")
